@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>My Website</title>
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+
+  <nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand p-3" href="#">SCPA WOL Dashboard</a>
+    </div>
+  </nav>
+
+  <div class="container mt-3">
+    <h1>Known Devices</h1>
+
+    <div>
+      <button class="btn btn-primary ms-auto d-block" id="wakeAllButton">Wake All</button>
+      <p class="ms-auto d-block text-end"><span id="wakeCountCompleted">0</span>/<span id="wakeCountTotal">0</span> Woke</p>
+    </div>
+
+    <div class="alert alert-warning d-flex align-items-center d-none" role="alert" id="liveFeedAlert">
+      <span class="me-auto">Live data feed disabled while sorting. Click to stop sorting and re-enable.</span>
+      <button class="btn btn-warning ms-auto" id="enableLiveFeedButton">Enable Live Data</button>
+    </div>
+    
+    <b><span id="computerCount">0</span> Computers</b>
+    <table class="table table-hover sortable" id="dataTable">
+      <thead id="dataTableHeader">
+        <tr>
+          <th scope="col">Computer Name</th>
+          <th scope="col">Last Contact</th>
+          <th scope="col">Power State</th>
+          <th scope="col">Contact IP</th>
+          <th scope="col">Ethernet/WiFi</th>
+          <th scope="col">Ethernet MAC</th>
+          <th scope="col" class="sorttable_nosort">Actions</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+        <tr>
+          <td>Loading...</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <style>
+    .version {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      padding: 5px;
+      margin: 15px;
+      background-color: #161616;
+      border-radius: 5px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .version span {
+      background-color: #272727;
+      color: #fff;
+      padding: 5px;
+      border-radius: 8px;
+    }
+  </style>
+
+  <div class="version">
+    <span>Alpha 4</span>
+    <span>10/15/2024</span>
+    <span>Created by Larry Rowe</span>
+  </div>
+  
+  <script src="/sorttable.js"></script>
+  <script src="/feather.min.js"></script>
+  <script src="/jquery-3.7.1.min.js"></script>
+  <script src="/axios.min.js"></script>
+  <script src="/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>
