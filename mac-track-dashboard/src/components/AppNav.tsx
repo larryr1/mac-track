@@ -1,5 +1,6 @@
 import { Container, Nav, NavDropdown } from 'react-bootstrap';
 import Navbar from 'react-bootstrap/Navbar';
+import style from './AppNav.module.css';
 
 export const AppNav = () => {
   return (
