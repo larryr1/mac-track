@@ -4,25 +4,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import App from './App.tsx';
 import './main.module.css';
-import { createTheme, ThemeProvider } from '@mui/material';
-
-const muiTheme = createTheme({
-  palette: {
-    mode: 'dark',
-  },
-  components: {
-    MuiButtonBase: {
-      defaultProps: {
-        disableRipple: true,
-      },
-    },
-  },
-});
+import { RecoilRoot } from 'recoil';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ThemeProvider theme={muiTheme}>
+    <RecoilRoot>
       <App />
-    </ThemeProvider>
+    </RecoilRoot>
   </StrictMode>,
 )

@@ -3,6 +3,7 @@ import { AppNav } from "./components/AppNav";
 import { MasterComputersTable } from "./components/MasterComputersTable";
 import { WakeByOU_Modal } from "./components/modals/WakeByOUModal/Wake-OU-Modal";
 import { WakeAll_Modal } from "./components/modals/WakeAll_Modal/WakeAll_Modal";
+import { WakingModal } from "./components/modals/Waking_Modal/WakingModal";
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <MasterComputersTable />
         <WakeByOU_Modal />
         <WakeAll_Modal />
+        <WakingModal />
       </div>
     </div>
   )
