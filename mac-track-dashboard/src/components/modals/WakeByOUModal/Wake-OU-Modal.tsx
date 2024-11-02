@@ -22,8 +22,15 @@ const accounts = [
 export const WakeByOU_Modal = () => {
   const [show, setShow] = useState(false);
 
+  const [selectedOU, setSelectedOU] = useState({});
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const handleOUChange = (ou:  | null, actionMeta: ActionMeta<Option>) => {
+    setSelectedOU(selectedOU);
+    alert(selectedOU.label);
+  }
 
   return (
     <>
@@ -37,7 +44,7 @@ export const WakeByOU_Modal = () => {
         </Modal.Header>
         <Modal.Body>
           Select the Organizational Unit(s) that contains the computers you want to wake.
-          <Select options={options} isMulti isSearchable className='text-black mt-3 mb-4' />
+          <Select options={options} isMulti isSearchable className='text-black mt-3 mb-4' onChange={handleOUChange} />
           Select the account to use after waking the computers.
           <Select options={accounts} defaultValue={accounts[0]} isSearchable className='text-black mt-3 mb-4' />
         </Modal.Body>
