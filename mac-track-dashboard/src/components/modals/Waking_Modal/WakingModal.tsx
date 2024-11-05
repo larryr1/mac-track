@@ -1,30 +1,42 @@
-import { useState } from 'react';
 import { Spinner } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
+import { useRecoilState } from 'recoil';
+import { wakingModalDataAtom } from '../../../atoms/modals/WakingModalState';
 
-interface WakingModalProps {
+export interface WakingModalData {
   show: boolean;
   ou: string;
   current: number;
   total: number;
 }
 
-export const WakingModal = (props: WakingModalProps) => {
-  const [show, setShow] = useState(true);
+/**
+ * WakingModal component displays a modal that shows the status of "waking" computers.
+ * The modal shows a loading spinner and a progress message indicating the number of computers that have been woken up.
+ * It also optionally displays the "OU" (organizational unit) if available. This component must be used by setting the WakingModalData atom via Recoil.
+ * 
+ * @component
+ * 
+ * @returns {JSX.Element} A modal displaying progress of the waking process.
+ */
+export const WakingModal = () => {
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  // State declarations
+  const [data, setData] = useRecoilState<WakingModalData>(wakingModalDataAtom);
+  const { show, ou, current = 0, total = 0 } = data;
+  const handleClose = () => setData({ ...data, show: false });
 
+  // Component body
   return (
-    <Modal show={true} onHide={handleClose} backdrop="static" keyboard={false}>
+    <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
       <Modal.Body className='text-center fw-bold'>
         Waking Computers
         <div className='mt-4 mb-3'><Spinner animation='border' /></div>
-        <p className='fw-light mb-0'>{props.current || 0}/{props.total || 0} Woke</p>
-        <p className={((props.ou == null) ? "d-none" : "") + " fw-light mb-0"}>OU: {props.ou}</p>
+        <p className='fw-light mb-0'>{current || 0}/{total || 0} Woke</p>
+        <p className={`fw-light mb-0 ${!ou ? "d-none" : ""}`}>OU: {ou}</p>
       </Modal.Body>
       <Modal.Footer>
-        This may take up to a minute to complete. Please keep this window open.
+        This may take up to a minute to complete. Please keep this window open until the operation finishes.
       </Modal.Footer>
     </Modal>
   )
