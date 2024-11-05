@@ -14,7 +14,7 @@ function App() {
         <MasterComputersTable />
         <WakeByOU_Modal />
         <WakeAll_Modal />
-        <WakingModal />
+        <WakingModal show={true} total={256} current={28} ou={"All Computers"} />
       </div>
     </div>
   )
