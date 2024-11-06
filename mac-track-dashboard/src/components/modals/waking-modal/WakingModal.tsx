@@ -1,7 +1,7 @@
 import { Spinner } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import { useRecoilState } from 'recoil';
-import { wakingModalDataAtom } from '../../../atoms/modals/WakingModalState';
+import { wakingModalDataAtom } from '../../../atoms/modals/WakingModalState.ts';
 
 export interface WakingModalData {
   show: boolean;
